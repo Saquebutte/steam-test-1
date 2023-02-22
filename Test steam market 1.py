@@ -1,10 +1,10 @@
 import time
 import requests
 
-item_id = 'AK-Thodik vie de neon vert'
+item_id = 'Green neon life AK-Thodik'
 appid=1575870
 market_hash_name='Green%20neon%20life%20AK-Thodik'
-asktime=int(input("How many sec do you awnt between each attempts : "))
+asktime=int(input("How many sec do you want between each attempts : "))
 
 url = f'https://steamcommunity.com/market/pricehistory/?appid={appid}&market_hash_name={market_hash_name}'
 print(url)
