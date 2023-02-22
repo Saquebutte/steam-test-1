@@ -4,7 +4,7 @@ import requests
 item_id = 'AK-Thodik vie de neon vert'
 appid=1575870
 market_hash_name='Green%20neon%20life%20AK-Thodik'
-asktime=int(input("Indiquez le nombre de secondes entre chaque tentatives : "))
+asktime=int(input("How many sec do you awnt between each attempts : "))
 
 url = f'https://steamcommunity.com/market/pricehistory/?appid={appid}&market_hash_name={market_hash_name}'
 print(url)
@@ -13,9 +13,9 @@ response = requests.get(url)
 print(response)
 
 if item_id in response.text:
-    print(f"L'objet {item_id} est trouvé sur le marché !")
+    print(f"The item {item_id} was found on the market !")
 else:
-    print(f"L'objet {item_id} n'est pas trouvé sur le marché !")
+    print(f"The item {item_id} wasn't found on the market !")
     exit()
 
 while True:
@@ -24,10 +24,10 @@ while True:
     if response.status_code == 200:
         item_data = response.json()
         current_price = item_data['prices'][0][1]
-        print(f"Prix actuel de {item_id} : {current_price}")
+        print(f"The actual price of {item_id} is : {current_price}")
 
         if previous_price is not None and current_price < previous_price:
-            print(f'Le prix de {item_id} a baissé ! Le nouveau prix est {current_price}')
+            print(f'{item_id} price is lower ! The new price is : {current_price}')
         previous_price = current_price
 
     time.sleep(asktime)
